@@ -2,7 +2,7 @@ import Home, { HomeProps } from 'templates/Home'
 import { QueryClient, useQuery } from "react-query";
 import { request } from "graphql-request";
 import { dehydrate } from "react-query/hydration";
-import graphqlClient from 'graphql/client'
+import graphqlRequestClient from 'graphql/graphqlRequestClient'
 import { GetCharactersQuery, useGetCharactersQuery } from 'graphql/generated/graphql'
 import { getAllCharacters, getChars } from 'graphql/queries'
 
@@ -30,7 +30,7 @@ export default function Index({ characters }: HomeProps) {
 }
 
 export const getStaticProps = async () => {
-  const { characters } = await graphqlClient.request<GetCharactersQuery>(
+  const { characters } = await graphqlRequestClient.request<GetCharactersQuery>(
     getChars
   )
 

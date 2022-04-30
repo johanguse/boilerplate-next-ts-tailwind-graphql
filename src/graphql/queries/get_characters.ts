@@ -1,5 +1,5 @@
 import { gql } from "graphql-request";
-import graphQLClient from "../client";
+import graphqlRequestClient from "../graphqlRequestClient";
 import { GetCharactersQuery } from 'graphql/generated/graphql'
 
 const getAllCharacters = async () => {
@@ -14,7 +14,7 @@ const getAllCharacters = async () => {
       }
   `;
 
-  const response = await graphQLClient.request<GetCharactersQuery>(query);
+  const response = await graphqlRequestClient.request<GetCharactersQuery>(query);
   const data = JSON.parse(JSON.stringify(response));
 
   console.log("response ---");
